@@ -57,7 +57,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 @ExperimentalMaterial3Api
 @Preview(showBackground = true)
 @Composable
@@ -66,9 +65,9 @@ fun MyScreen() {
         topBar = { TopAppbar()},
         bottomBar = { BottomBar() }
     )
-        { innerPadding ->
-            ScreenBody(innerPadding)
-        }
+    { innerPadding ->
+        ScreenBody(innerPadding)
+    }
 
 
 }
@@ -79,15 +78,15 @@ fun MyScreen() {
 fun TopAppbar() {
     TopAppBar(colors = topAppBarColors(containerColor = Color(0xFF67E4F4)),
         title = {
-        Row() {
-            Image(painter = painterResource(id = drawable.pic3), contentDescription ="My pic",
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .size(33.dp)
-                .clip(CircleShape))
-            Spacer(modifier = Modifier.padding(start = 10.dp))
-            Text(text = "My Gallery", fontWeight = FontWeight.ExtraBold)
-        }
+            Row() {
+                Image(painter = painterResource(id = drawable.pic3), contentDescription ="My pic",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(33.dp)
+                        .clip(CircleShape))
+                Spacer(modifier = Modifier.padding(start = 10.dp))
+                Text(text = "My Gallery", fontWeight = FontWeight.ExtraBold)
+            }
         },
         actions = {
             IconButton(onClick = { /*TODO*/ }) {
@@ -104,97 +103,38 @@ fun TopAppbar() {
 @Composable
 fun ScreenBody(Innerpadding : PaddingValues) {
     Column(modifier = Modifier.padding((Innerpadding))) {
-         Text(text = "Photos", fontWeight = FontWeight.ExtraBold, fontSize = 20.sp,
-             modifier = Modifier
-                 .fillMaxWidth()
-                 .padding(start = 9.dp, top = 9.dp, bottom = 9.dp))
-        LazyRow(modifier = Modifier.padding(start = 9.dp, end = 9.dp)) {
-            item {
-                Column(modifier = Modifier.padding(7.dp)) {
-                    Image(
-                        painter = painterResource(id = drawable.pic5),
-                        contentDescription = "My pic",
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .size(120.dp)
-                            .clip(RoundedCornerShape(8.dp))
-                    )
-                    Spacer(modifier = Modifier.padding(4.dp))
-                    Text(text = "Picture 1", fontSize = 15.sp)
-                }
+        Text(text = "Photos", fontWeight = FontWeight.ExtraBold, fontSize = 20.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(all = 8.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.padding(all = 9.dp)) {
+            Column {
+                Image(painter = painterResource(id = drawable.pic4), contentDescription ="My pic",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(120.dp)
+                        .clip(RoundedCornerShape(8.dp)))
+                Spacer(modifier = Modifier.padding(4.dp))
+                Text(text = "Picture 1", fontSize = 15.sp)
+            }
 
-                Column(modifier = Modifier.padding(7.dp)) {
-                    Image(
-                        painter = painterResource(id = drawable.pic2),
-                        contentDescription = "My pic",
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .size(120.dp)
-                            .clip(RoundedCornerShape(8.dp))
-                    )
-                    Spacer(modifier = Modifier.padding(4.dp))
-                    Text(text = "picture 2", fontSize = 15.sp)
-                }
-                Column(modifier = Modifier.padding(7.dp)) {
-                    Image(
-                        painter = painterResource(id = drawable.pic3),
-                        contentDescription = "My pic",
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .size(120.dp)
-                            .clip(RoundedCornerShape(8.dp))
-                    )
-                    Spacer(modifier = Modifier.padding(4.dp))
-                    Text(text = "Picture 3", fontSize = 15.sp)
-                }
-                Column(modifier = Modifier.padding(7.dp)) {
-                    Image(
-                        painter = painterResource(id = drawable.pic4),
-                        contentDescription = "My pic",
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .size(120.dp)
-                            .clip(RoundedCornerShape(8.dp))
-                    )
-                    Spacer(modifier = Modifier.padding(4.dp))
-                    Text(text = "Picture 4", fontSize = 15.sp)
-                }
-                Column(modifier = Modifier.padding(7.dp)) {
-                    Image(
-                        painter = painterResource(id = drawable.pic1),
-                        contentDescription = "My pic",
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .size(120.dp)
-                            .clip(RoundedCornerShape(8.dp))
-                    )
-                    Spacer(modifier = Modifier.padding(4.dp))
-                    Text(text = "Picture 5", fontSize = 15.sp)
-                }
-                Column(modifier = Modifier.padding(7.dp)) {
-                    Image(
-                        painter = painterResource(id = drawable.pic6),
-                        contentDescription = "My pic",
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .size(120.dp)
-                            .clip(RoundedCornerShape(8.dp))
-                    )
-                    Spacer(modifier = Modifier.padding(4.dp))
-                    Text(text = "Picture 6", fontSize = 15.sp)
-                }
-                Column(modifier = Modifier.padding(7.dp)) {
-                    Image(
-                        painter = painterResource(id = drawable.pic7),
-                        contentDescription = "My pic",
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .size(120.dp)
-                            .clip(RoundedCornerShape(8.dp))
-                    )
-                    Spacer(modifier = Modifier.padding(4.dp))
-                    Text(text = "Picture 7", fontSize = 15.sp)
-                }
+            Column {
+                Image(painter = painterResource(id = drawable.pic3), contentDescription ="My pic",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(120.dp)
+                        .clip(RoundedCornerShape(8.dp)))
+                Spacer(modifier = Modifier.padding(4.dp))
+                Text(text = "picture 2",fontSize = 15.sp)
+            }
+            Column {
+                Image(painter = painterResource(id = drawable.pic5), contentDescription ="My pic",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(120.dp)
+                        .clip(RoundedCornerShape(8.dp)))
+                Spacer(modifier = Modifier.padding(4.dp))
+                Text(text = "Picture 3",fontSize = 15.sp)
             }
         }
     }
@@ -203,21 +143,21 @@ fun ScreenBody(Innerpadding : PaddingValues) {
 // Bottom App Bar
 @Composable
 fun BottomBar() {
-   BottomAppBar(containerColor = Color(0xFF67E4F4),
+    BottomAppBar(containerColor = Color(0xFF67E4F4),
         actions = {
-        IconButton(onClick = { /*TODO*/ })
-        {
-            Icon(Icons.Filled.LocationOn, contentDescription = "Location")
-        }
-        IconButton(onClick = { /*TODO*/ })
-        {
-            Icon(Icons.Filled.Call, contentDescription = "Call")
-        }
-        IconButton(onClick = { /*TODO*/ })
-        {
-            Icon(Icons.Filled.Email, contentDescription = "Email")
-        }
-    },
+            IconButton(onClick = { /*TODO*/ })
+            {
+                Icon(Icons.Filled.LocationOn, contentDescription = "Location")
+            }
+            IconButton(onClick = { /*TODO*/ })
+            {
+                Icon(Icons.Filled.Call, contentDescription = "Call")
+            }
+            IconButton(onClick = { /*TODO*/ })
+            {
+                Icon(Icons.Filled.Email, contentDescription = "Email")
+            }
+        },
         floatingActionButton = {
             FloatingActionButton(onClick = { /*TODO*/ }, containerColor = Color(0xFF5AB0BB)) {
                 Icon(Icons.Filled.Add, contentDescription = "Add")
@@ -225,8 +165,4 @@ fun BottomBar() {
         }
     )
 }
-
-
-
-
 
