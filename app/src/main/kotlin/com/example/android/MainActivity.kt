@@ -11,9 +11,11 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -45,7 +47,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.android.R.drawable
-
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -107,38 +108,91 @@ fun ScreenBody(Innerpadding : PaddingValues) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(all = 8.dp))
-        Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.padding(all = 9.dp)) {
-            Column {
-                Image(painter = painterResource(id = drawable.pic4), contentDescription ="My pic",
+        LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.padding(all = 9.dp)) {
+            item {
+                Image(
+                    painter = painterResource(id = drawable.pic3),
+                    contentDescription = "My pic",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .size(120.dp)
-                        .clip(RoundedCornerShape(8.dp)))
-                Spacer(modifier = Modifier.padding(4.dp))
+                        .clip(RoundedCornerShape(8.dp))
+                )
                 Text(text = "Picture 1", fontSize = 15.sp)
-            }
+                Spacer(modifier = Modifier.padding(4.dp))
 
-            Column {
-                Image(painter = painterResource(id = drawable.pic3), contentDescription ="My pic",
+
+                Image(
+                    painter = painterResource(id = drawable.pic2),
+                    contentDescription = "My pic",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .size(120.dp)
-                        .clip(RoundedCornerShape(8.dp)))
+                        .clip(RoundedCornerShape(8.dp))
+                )
+                Text(text = "picture 2", fontSize = 15.sp)
                 Spacer(modifier = Modifier.padding(4.dp))
-                Text(text = "picture 2",fontSize = 15.sp)
-            }
-            Column {
-                Image(painter = painterResource(id = drawable.pic5), contentDescription ="My pic",
+
+                Image(
+                    painter = painterResource(id = drawable.pic5),
+                    contentDescription = "My pic",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .size(120.dp)
-                        .clip(RoundedCornerShape(8.dp)))
+                        .clip(RoundedCornerShape(8.dp))
+                )
+                Text(text = "Picture 3", fontSize = 15.sp)
                 Spacer(modifier = Modifier.padding(4.dp))
-                Text(text = "Picture 3",fontSize = 15.sp)
+
+                Image(
+                    painter = painterResource(id = drawable.pic4),
+                    contentDescription = "My pic",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(120.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                )
+                Text(text = "Picture 4", fontSize = 15.sp)
+                Spacer(modifier = Modifier.padding(4.dp))
+
+                Image(
+                    painter = painterResource(id = drawable.pic6),
+                    contentDescription = "My pic",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(120.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                )
+                Text(text = "Picture 5", fontSize = 15.sp)
+                Spacer(modifier = Modifier.padding(4.dp))
+
+                Image(
+                    painter = painterResource(id = drawable.pic7),
+                    contentDescription = "My pic",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(120.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                )
+                Text(text = "Picture 6", fontSize = 15.sp)
+                Spacer(modifier = Modifier.padding(4.dp))
+
+                Image(
+                    painter = painterResource(id = drawable.pic1),
+                    contentDescription = "My pic",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(120.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                )
+                Text(text = "Picture 7", fontSize = 15.sp)
+                Spacer(modifier = Modifier.padding(4.dp))
             }
         }
     }
 }
+
+
 
 // Bottom App Bar
 @Composable
@@ -165,4 +219,8 @@ fun BottomBar() {
         }
     )
 }
+
+
+
+
 
