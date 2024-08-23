@@ -7,11 +7,11 @@ plugins {
 
 
 android {
-    namespace = "com.example.android"
+    namespace = "com.shanza.android"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.android"
+        applicationId = "com.shanza.android"
         minSdk = 29
         targetSdk = 34
         versionCode = 1

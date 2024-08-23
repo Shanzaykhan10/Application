@@ -1,4 +1,4 @@
-package com.example.android
+package com.shanza.android
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,13 +10,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -36,7 +33,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -46,7 +42,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.android.R.drawable
+import com.shanza.android.R
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -80,7 +76,7 @@ fun TopAppbar() {
     TopAppBar(colors = topAppBarColors(containerColor = Color(0xFF67E4F4)),
         title = {
             Row() {
-                Image(painter = painterResource(id = drawable.pic3), contentDescription ="My pic",
+                Image(painter = painterResource(id = R.drawable.pic4), contentDescription ="My pic",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .size(33.dp)
@@ -111,7 +107,7 @@ fun ScreenBody(Innerpadding : PaddingValues) {
         LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.padding(all = 9.dp)) {
             item {
                 Image(
-                    painter = painterResource(id = drawable.pic3),
+                    painter = painterResource(id =R.drawable.pic3),
                     contentDescription = "My pic",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -123,7 +119,7 @@ fun ScreenBody(Innerpadding : PaddingValues) {
 
 
                 Image(
-                    painter = painterResource(id = drawable.pic2),
+                    painter = painterResource(id = R.drawable.pic2),
                     contentDescription = "My pic",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -134,7 +130,7 @@ fun ScreenBody(Innerpadding : PaddingValues) {
                 Spacer(modifier = Modifier.padding(4.dp))
 
                 Image(
-                    painter = painterResource(id = drawable.pic5),
+                    painter = painterResource(id = R.drawable.pic5),
                     contentDescription = "My pic",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -145,7 +141,7 @@ fun ScreenBody(Innerpadding : PaddingValues) {
                 Spacer(modifier = Modifier.padding(4.dp))
 
                 Image(
-                    painter = painterResource(id = drawable.pic4),
+                    painter = painterResource(id = R.drawable.pic4),
                     contentDescription = "My pic",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -156,7 +152,7 @@ fun ScreenBody(Innerpadding : PaddingValues) {
                 Spacer(modifier = Modifier.padding(4.dp))
 
                 Image(
-                    painter = painterResource(id = drawable.pic6),
+                    painter = painterResource(id = R.drawable.pic4),
                     contentDescription = "My pic",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -167,7 +163,7 @@ fun ScreenBody(Innerpadding : PaddingValues) {
                 Spacer(modifier = Modifier.padding(4.dp))
 
                 Image(
-                    painter = painterResource(id = drawable.pic7),
+                    painter = painterResource(id = R.drawable.pic7),
                     contentDescription = "My pic",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -178,7 +174,7 @@ fun ScreenBody(Innerpadding : PaddingValues) {
                 Spacer(modifier = Modifier.padding(4.dp))
 
                 Image(
-                    painter = painterResource(id = drawable.pic1),
+                    painter = painterResource(id = R.drawable.pic1),
                     contentDescription = "My pic",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
