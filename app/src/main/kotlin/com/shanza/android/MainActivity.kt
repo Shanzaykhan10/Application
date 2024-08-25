@@ -43,6 +43,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.shanza.android.R
+import com.shanza.android.screen.PreviewFunction
+import com.shanza.android.screen.ScreenBox
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -50,7 +52,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            MyScreen()
+            PreviewFunction()
+
         }
     }
 }
