@@ -38,11 +38,19 @@ import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.CheckCircle
+import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Menu
+import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material.icons.outlined.Place
+import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.sharp.Home
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -82,6 +90,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.shanza.android.R
+import java.security.spec.RSAOtherPrimeInfo
 
 @ExperimentalMaterial3Api
 @Preview
@@ -97,7 +106,9 @@ fun PreviewFunction() {
 @ExperimentalMaterial3Api
 @Composable
 fun ScreenBox(Innerpadding : PaddingValues) {
-        Column(modifier = Modifier.padding(Innerpadding)) {
+        Column(modifier = Modifier
+            .padding(Innerpadding)
+            .fillMaxHeight()) {
             Box(
                 modifier = Modifier
                     .height(255.dp)
@@ -153,7 +164,6 @@ fun ScreenBox(Innerpadding : PaddingValues) {
                         shape = RoundedCornerShape(8.dp),
                         colors = TextFieldDefaults.textFieldColors(
                             containerColor = Color(0xFFFEFEFF),
-                            focusedIndicatorColor = Color.Transparent,
                             unfocusedIndicatorColor = Color.Transparent
                         ),
                         modifier = Modifier.size(width = 350.dp, height = 50.dp),
@@ -194,13 +204,103 @@ fun ScreenBox(Innerpadding : PaddingValues) {
                     )
                 }
             }
-            LazyRow(modifier = Modifier.padding(start = 15.dp, end = 15.dp, top = 2.dp)) {
+            LazyRow(modifier = Modifier.padding(start = 15.dp, top = 2.dp)) {
                 item {
                     Column {
+                        Box {
+                            Image(
+                                painter = painterResource(id = R.drawable.art_event),
+                                contentDescription = "Art event",
+                                modifier = Modifier
+                                    .width(270.dp)
+                                    .clip(RoundedCornerShape(8.dp))
+                            )
+                            Box(
+                                modifier = Modifier
+                                    .padding(start = 15.dp, top = 15.dp)
+                                    .background(Color(0xFF77767A))
+                                    .width(50.dp)
+                                    .height(56.dp)
+                                    .shadow(1.dp, shape = RoundedCornerShape(3.dp))
+                            )
+                            {
+                                Column(
+                                    modifier = Modifier
+                                        .padding(12.dp)
+                                        .size(width = 68.dp, height = 68.dp)
+                                ) {
+                                    Text(text = "Nov", color = Color.White)
+                                    Text(text = "18", fontWeight = FontWeight.ExtraBold,
+                                        color = Color.White, fontSize = 17.sp)
+                                }
+                            }
+                            Box(modifier = Modifier
+                                .padding(top = 120.dp, start = 15.dp)
+                                .background(Color(0xFF77767A))
+                                .height(30.dp)
+                                .width(138.dp)) {
+                                Row() {
+                                    Icon(Icons.Outlined.Menu, "Check",
+                                        tint = Color(0xFF494546)
+                                    )
+                                    Spacer(modifier = Modifier.padding(start = 5.dp))
+                                    Text(text = "Workshops",
+                                        color = Color.White,
+                                        fontSize = 20.sp)
+                                }
+                            }
+                        }
+                        Spacer(modifier = Modifier.padding(6.dp))
+                        Text(
+                            text = "Art festival in pakistan",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Row(
+                            modifier = Modifier.padding(top = 8.dp),
+                            horizontalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            Icon(
+                                Icons.Outlined.CheckCircle,
+                                contentDescription = "KeyboardArrowDown",
+                                modifier = Modifier.size(18.dp)
+                            )
+                            Text(text = "10:00 - 19:30")
+                        }
+                    }
+
+                    Column(modifier = Modifier.padding(start = 18.dp)) {
+                        Image(
+                            painter = painterResource(id = R.drawable.culture_event),
+                            contentDescription = "Event 1",
+                            modifier = Modifier
+                                .width(240.dp)
+                                .clip(RoundedCornerShape(8.dp))
+                        )
+                        Spacer(modifier = Modifier.padding(6.dp))
+                        Text(
+                            text = "Culture festival in pakistan",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Row(
+                            modifier = Modifier.padding(top = 8.dp),
+                            horizontalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            Icon(
+                                Icons.Outlined.CheckCircle,
+                                contentDescription = "KeyboardArrowDown",
+                                modifier = Modifier.size(18.dp)
+                            )
+                            Text(text = "10:00 - 19:30")
+                        }
+                    }
+                    Column(modifier = Modifier.padding(start = 18.dp)) {
                         Image(
                             painter = painterResource(id = R.drawable.art_event),
                             contentDescription = "Art event",
                             modifier = Modifier
+                                .width(270.dp)
                                 .clip(RoundedCornerShape(8.dp))
                         )
                         Spacer(modifier = Modifier.padding(6.dp))
@@ -221,17 +321,17 @@ fun ScreenBox(Innerpadding : PaddingValues) {
                             Text(text = "10:00 - 19:30")
                         }
                     }
-
                     Column(modifier = Modifier.padding(start = 18.dp)) {
                         Image(
-                            painter = painterResource(id = R.drawable.art_event),
+                            painter = painterResource(id = R.drawable.culture_event),
                             contentDescription = "Event 1",
                             modifier = Modifier
+                                .width(240.dp)
                                 .clip(RoundedCornerShape(8.dp))
                         )
                         Spacer(modifier = Modifier.padding(6.dp))
                         Text(
-                            text = "Art festival in pakistan",
+                            text = "Culture festival in pakistan",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold
                         )
@@ -246,57 +346,6 @@ fun ScreenBox(Innerpadding : PaddingValues) {
                             )
                             Text(text = "10:00 - 19:30")
                         }
-                    }
-                    Column(modifier = Modifier.padding(start = 18.dp)) {
-                        Image(
-                            painter = painterResource(id = R.drawable.art_event),
-                            contentDescription = "food Event",
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(8.dp))
-                        )
-                        Spacer(modifier = Modifier.padding(6.dp))
-                        Text(
-                            text = "Art festival in pakistan",
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Row(
-                            modifier = Modifier.padding(top = 8.dp),
-                            horizontalArrangement = Arrangement.spacedBy(6.dp)
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.CheckCircle,
-                                contentDescription = "check circle",
-                                modifier = Modifier.size(18.dp)
-                            )
-                            Text(text = "10:00 - 19:30")
-                        }
-                    }
-                    Column(modifier = Modifier.padding(start = 18.dp, end = 18.dp)) {
-                        Image(
-                            painter = painterResource(id = R.drawable.art_event),
-                            contentDescription = "Sport event",
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(8.dp))
-                        )
-                        Spacer(modifier = Modifier.padding(6.dp))
-                        Text(
-                            text = "Art festival in pakistan",
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Row(
-                            modifier = Modifier.padding(top = 8.dp),
-                            horizontalArrangement = Arrangement.spacedBy(6.dp)
-                        ) {
-                            Icon(
-                                Icons.Outlined.CheckCircle,
-                                contentDescription = "KeyboardArrowDown",
-                                modifier = Modifier.size(18.dp)
-                            )
-                            Text(text = "10:00 - 19:30")
-                        }
-
                     }
                 }
             }
@@ -330,10 +379,10 @@ fun ScreenBox(Innerpadding : PaddingValues) {
             Row {
                 Box(
                     modifier = Modifier
-                        .padding(start = 10.dp)
+                        .padding(start = 15.dp)
                         .background(Color.White)
                         .width(50.dp)
-                        .height(60.dp)
+                        .height(65.dp)
                         .shadow(2.dp, shape = RoundedCornerShape(10.dp))
                 )
                 {
@@ -346,11 +395,12 @@ fun ScreenBox(Innerpadding : PaddingValues) {
                         Text(text = "18", fontWeight = FontWeight.ExtraBold)
                     }
                 }
-                Spacer(modifier = Modifier.width(16.dp))
+
                 Image(
-                    painter = painterResource(id = R.drawable.art_event),
+                    painter = painterResource(id = R.drawable.upcoming_event),
                     contentDescription = "Art event",
                     modifier = Modifier
+                        .fillMaxSize()
                         .clip(RoundedCornerShape(8.dp))
                 )
             }
@@ -359,41 +409,56 @@ fun ScreenBox(Innerpadding : PaddingValues) {
 
 @Composable
 fun BottomBar() {
-    BottomAppBar(containerColor = Color.Transparent, contentColor = Color(0xFFA2A1A5),
+    BottomAppBar(containerColor = Color.Transparent,
         actions = {
-            Spacer(modifier = Modifier.padding(start = 15.dp))
-            IconButton(onClick = { /*TODO*/ })
-            {
-                Icon(Icons.Outlined.Home, contentDescription = "Location",
-                    modifier = Modifier.size(50.dp))
+            Column(modifier = Modifier
+                .padding(start = 25.dp)) {
+
+                Icon(
+                    Icons.Outlined.Home, "Home",
+                    modifier = Modifier.size(40.dp), tint = Color.Gray
+                )
+                Text(text = "Home", color = Color.Gray)
             }
-            Spacer(modifier = Modifier.padding(start = 24.dp))
-            IconButton(onClick = { /*TODO*/ })
-            {
-                Icon(Icons.Outlined.Email, contentDescription = "Call",
-                    modifier = Modifier.size(50.dp))
+            Spacer(modifier = Modifier.padding(start = 35.dp))
+            Column(modifier = Modifier
+                .padding(start = 20.dp)) {
+
+                Icon(
+                    Icons.Outlined.Search, "Search",
+                    modifier = Modifier.size(40.dp),tint = Color.Gray
+                )
+                Text(text = "Search",color = Color.Gray)
             }
-            Spacer(modifier = Modifier.padding(start = 24.dp))
-            IconButton(onClick = { /*TODO*/ })
-            {
-                Icon(Icons.Filled.ExitToApp, contentDescription = "Email",
-                    modifier = Modifier.size(50.dp))
+            Spacer(modifier = Modifier.padding(start = 35.dp))
+            Column(modifier = Modifier
+                .padding(start = 20.dp)) {
+
+                Icon(
+                    Icons.Outlined.Place, "Place",
+                    modifier = Modifier.size(40.dp),tint = Color.Gray
+                )
+                Text(text = "Place",color = Color.Gray)
             }
-            Spacer(modifier = Modifier.padding(start = 24.dp))
-            IconButton(onClick = { /*TODO*/ })
-            {
-                Icon(Icons.Filled.Notifications, contentDescription = "Email",
-                    modifier = Modifier.size(50.dp))
-            }
-            Spacer(modifier = Modifier.padding(start = 24.dp))
-            IconButton(onClick = { /*TODO*/ })
-            {
-                Icon(Icons.Filled.Menu, contentDescription = "Email",
-                    modifier = Modifier.size(50.dp))
+            Spacer(modifier = Modifier.padding(start = 35.dp))
+            Column(modifier = Modifier
+                .padding(start = 20.dp)) {
+
+                Icon(
+                    Icons.Outlined.Menu, "Menu",
+                    modifier = Modifier.size(40.dp),tint = Color.Gray
+                )
+                Text(text = "Menu",color = Color.Gray)
             }
         }
     )
 }
+
+
+
+
+
+
 
 
 
