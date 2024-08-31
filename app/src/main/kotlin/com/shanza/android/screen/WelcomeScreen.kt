@@ -9,6 +9,7 @@ import androidx.compose.foundation.interaction.DragInteraction
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -97,209 +98,112 @@ import com.shanza.android.R
 import java.security.spec.RSAOtherPrimeInfo
 
 @ExperimentalMaterial3Api
-@Preview
+@Preview(showBackground = true)
 @Composable
-fun PreviewFunction() {
-    Scaffold(
-        bottomBar = { BottomBar()}
+fun ScreenBox() {
+    Column(
+        modifier = Modifier
+            .fillMaxHeight()
     ) {
-        innerpadding -> ScreenBox(innerpadding)
-    }
-}
+        Box(
+            modifier = Modifier
+                .height(255.dp)
+                .background(Color(0xFFEDE9F3))
+        )
+        {
 
-@ExperimentalMaterial3Api
-@Composable
-fun ScreenBox(Innerpadding : PaddingValues) {
-        Column(modifier = Modifier
-            .padding(Innerpadding)
-            .fillMaxHeight()) {
-            Box(
+            Row(
+                horizontalArrangement = Arrangement.End,
                 modifier = Modifier
-                    .height(255.dp)
-                    .background(Color(0xFFEDE9F3))
-            )
-            {
-
-                Row(
-                    horizontalArrangement = Arrangement.End,
+                    .fillMaxWidth()
+                    .padding(20.dp)
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.pic2),
+                    contentDescription = "My pic",
+                    contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(20.dp)
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.pic2),
-                        contentDescription = "My pic",
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .size(45.dp)
-                            .clip(CircleShape)
+                        .size(45.dp)
+                        .clip(CircleShape)
+                )
+            }
+            Column(modifier = Modifier.padding(start = 20.dp, top = 20.dp)) {
+                Row {
+                    Text(text = "New York", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                    Icon(
+                        Icons.Default.KeyboardArrowDown,
+                        contentDescription = "KeyboardArrowDown"
                     )
                 }
-                Column(modifier = Modifier.padding(start = 20.dp, top = 20.dp)) {
-                    Row {
-                        Text(text = "New York", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+                Text(
+                    text = "within 20 miles", color = Color.DarkGray
+                )
+
+                Spacer(
+                    modifier = Modifier.height(20.dp)
+                )
+
+                Text(
+                    text = "Hello, Simone",
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.ExtraBold
+                )
+                Text(
+                    text = "There are 25 new \n Events in your area.",
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(0xFFAD9ACC)
+                )
+                Spacer(modifier = Modifier.height(19.dp))
+                TextField(value = "Search for an event",
+                    onValueChange = {},
+                    shape = RoundedCornerShape(8.dp),
+                    colors = TextFieldDefaults.textFieldColors(
+                        containerColor = Color(0xFFFEFEFF),
+                        unfocusedIndicatorColor = Color.Transparent
+                    ),
+                    modifier = Modifier.size(width = 350.dp, height = 50.dp),
+                    leadingIcon = {
                         Icon(
-                            Icons.Default.KeyboardArrowDown,
-                            contentDescription = "KeyboardArrowDown"
+                            Icons.Default.Search,
+                            contentDescription = "Search"
                         )
                     }
-                    Text(
-                        text = "within 20 miles", color = Color.DarkGray
-                    )
-
-                    Spacer(
-                        modifier = Modifier.height(20.dp)
-                    )
-
-                    Text(
-                        text = "Hello, Simone",
-                        fontSize = 30.sp,
-                        fontWeight = FontWeight.ExtraBold
-                    )
-                    Text(
-                        text = "There are 25 new \n Events in your area.",
-                        fontSize = 30.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color(0xFFAD9ACC)
-                    )
-                    Spacer(modifier = Modifier.height(19.dp))
-                    TextField(value = "Search for an event",
-                        onValueChange = {},
-                        shape = RoundedCornerShape(8.dp),
-                        colors = TextFieldDefaults.textFieldColors(
-                            containerColor = Color(0xFFFEFEFF),
-                            unfocusedIndicatorColor = Color.Transparent
-                        ),
-                        modifier = Modifier.size(width = 350.dp, height = 50.dp),
-                        leadingIcon = {
-                            Icon(
-                                Icons.Default.Search,
-                                contentDescription = "Search"
-                            )
-                        }
-                    )
-                }
+                )
             }
-            Row(
-                modifier = Modifier
-                    .background(Color(0xFFF9F7FF))
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+        }
+        Row(
+            modifier = Modifier
+                .background(Color(0xFFF9F7FF))
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = "You might like this",
+                fontWeight = FontWeight.ExtraBold,
+                fontSize = 20.sp, modifier = Modifier
+                    .padding(top = 30.dp, start = 13.dp)
+            )
+            TextButton(
+                onClick = {},
+                colors = textButtonColors(
+                    contentColor = Color.Gray
+                ),
+                modifier = Modifier.padding(end = 20.dp, top = 20.dp)
             ) {
                 Text(
-                    text = "You might like this",
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = 20.sp, modifier = Modifier
-                        .padding(top = 30.dp, start = 13.dp)
-                )
-                TextButton(
-                    onClick = {},
-                    colors = textButtonColors(
-                        contentColor = Color.Gray
-                    ),
-                    modifier = Modifier.padding(end = 20.dp, top = 20.dp)
-                ) {
-                    Text(
-                        text = "See All", fontSize = 15.sp,
-                        style = TextStyle(
-                            textDecoration = TextDecoration
-                                .Underline
-                        )
+                    text = "See All", fontSize = 15.sp,
+                    style = TextStyle(
+                        textDecoration = TextDecoration
+                            .Underline
                     )
-                }
+                )
             }
-            LazyRow(modifier = Modifier.padding(start = 15.dp, top = 2.dp)) {
-                item {
-                    Column {
-                        Box {
-                            Image(
-                                painter = painterResource(id = R.drawable.art_event),
-                                contentDescription = "Art event",
-                                modifier = Modifier
-                                    .width(270.dp)
-                                    .clip(RoundedCornerShape(8.dp))
-                            )
-                            Box(
-                                modifier = Modifier
-                                    .padding(start = 15.dp, top = 15.dp)
-                                    .background(Color(0xFF77767A))
-                                    .width(50.dp)
-                                    .height(56.dp)
-                                    .shadow(1.dp, shape = RoundedCornerShape(3.dp))
-                            )
-                            {
-                                Column(
-                                    modifier = Modifier
-                                        .padding(12.dp)
-                                        .size(width = 68.dp, height = 68.dp)
-                                ) {
-                                    Text(text = "Nov", color = Color.White)
-                                    Text(text = "18", fontWeight = FontWeight.ExtraBold,
-                                        color = Color.White, fontSize = 17.sp)
-                                }
-                            }
-                            Box(modifier = Modifier
-                                .padding(top = 120.dp, start = 15.dp)
-                                .background(Color(0xFF77767A))
-                                .height(30.dp)
-                                .width(138.dp)) {
-                                Row() {
-                                    Icon(Icons.Outlined.Menu, "Check",
-                                        tint = Color(0xFF494546)
-                                    )
-                                    Spacer(modifier = Modifier.padding(start = 5.dp))
-                                    Text(text = "Workshops",
-                                        color = Color.White,
-                                        fontSize = 20.sp)
-                                }
-                            }
-                        }
-                        Spacer(modifier = Modifier.padding(6.dp))
-                        Text(
-                            text = "Art festival in pakistan",
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Row(
-                            modifier = Modifier.padding(top = 8.dp),
-                            horizontalArrangement = Arrangement.spacedBy(6.dp)
-                        ) {
-                            Icon(
-                                Icons.Outlined.CheckCircle,
-                                contentDescription = "KeyboardArrowDown",
-                                modifier = Modifier.size(18.dp)
-                            )
-                            Text(text = "10:00 - 19:30")
-                        }
-                    }
-
-                    Column(modifier = Modifier.padding(start = 18.dp)) {
-                        Image(
-                            painter = painterResource(id = R.drawable.culture_event),
-                            contentDescription = "Event 1",
-                            modifier = Modifier
-                                .width(240.dp)
-                                .clip(RoundedCornerShape(8.dp))
-                        )
-                        Spacer(modifier = Modifier.padding(6.dp))
-                        Text(
-                            text = "Culture festival in pakistan",
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Row(
-                            modifier = Modifier.padding(top = 8.dp),
-                            horizontalArrangement = Arrangement.spacedBy(6.dp)
-                        ) {
-                            Icon(
-                                Icons.Outlined.CheckCircle,
-                                contentDescription = "KeyboardArrowDown",
-                                modifier = Modifier.size(18.dp)
-                            )
-                            Text(text = "10:00 - 19:30")
-                        }
-                    }
-                    Column(modifier = Modifier.padding(start = 18.dp)) {
+        }
+        LazyRow(modifier = Modifier.padding(start = 15.dp, top = 2.dp)) {
+            item {
+                Column {
+                    Box {
                         Image(
                             painter = painterResource(id = R.drawable.art_event),
                             contentDescription = "Art event",
@@ -307,79 +211,179 @@ fun ScreenBox(Innerpadding : PaddingValues) {
                                 .width(270.dp)
                                 .clip(RoundedCornerShape(8.dp))
                         )
-                        Spacer(modifier = Modifier.padding(6.dp))
-                        Text(
-                            text = "Art festival in pakistan",
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold
+                        Box(
+                            modifier = Modifier
+                                .padding(start = 15.dp, top = 15.dp)
+                                .background(Color(0xFF77767A))
+                                .width(50.dp)
+                                .height(56.dp)
+                                .shadow(1.dp, shape = RoundedCornerShape(3.dp))
                         )
-                        Row(
-                            modifier = Modifier.padding(top = 8.dp),
-                            horizontalArrangement = Arrangement.spacedBy(6.dp)
+                        {
+                            Column(
+                                modifier = Modifier
+                                    .padding(12.dp)
+                                    .size(width = 68.dp, height = 68.dp)
+                            ) {
+                                Text(text = "Nov", color = Color.White)
+                                Text(
+                                    text = "18", fontWeight = FontWeight.ExtraBold,
+                                    color = Color.White, fontSize = 17.sp
+                                )
+                            }
+                        }
+                        Box(
+                            modifier = Modifier
+                                .padding(top = 120.dp, start = 15.dp)
+                                .background(Color(0xFF77767A))
+                                .height(30.dp)
+                                .width(138.dp)
                         ) {
-                            Icon(
-                                Icons.Outlined.CheckCircle,
-                                contentDescription = "KeyboardArrowDown",
-                                modifier = Modifier.size(18.dp)
-                            )
-                            Text(text = "10:00 - 19:30")
+                            Row() {
+                                Icon(
+                                    Icons.Outlined.Menu, "Check",
+                                    tint = Color(0xFF494546)
+                                )
+                                Spacer(modifier = Modifier.padding(start = 5.dp))
+                                Text(
+                                    text = "Workshops",
+                                    color = Color.White,
+                                    fontSize = 20.sp
+                                )
+                            }
                         }
                     }
-                    Column(modifier = Modifier.padding(start = 18.dp)) {
-                        Image(
-                            painter = painterResource(id = R.drawable.culture_event),
-                            contentDescription = "Event 1",
-                            modifier = Modifier
-                                .width(240.dp)
-                                .clip(RoundedCornerShape(8.dp))
+                    Spacer(modifier = Modifier.padding(6.dp))
+                    Text(
+                        text = "Art festival in pakistan",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Row(
+                        modifier = Modifier.padding(top = 8.dp),
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        Icon(
+                            Icons.Outlined.CheckCircle,
+                            contentDescription = "KeyboardArrowDown",
+                            modifier = Modifier.size(18.dp)
                         )
-                        Spacer(modifier = Modifier.padding(6.dp))
-                        Text(
-                            text = "Culture festival in pakistan",
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold
+                        Text(text = "10:00 - 19:30")
+                    }
+                }
+
+                Column(modifier = Modifier.padding(start = 18.dp)) {
+                    Image(
+                        painter = painterResource(id = R.drawable.culture_event),
+                        contentDescription = "Event 1",
+                        modifier = Modifier
+                            .width(240.dp)
+                            .clip(RoundedCornerShape(8.dp))
+                    )
+                    Spacer(modifier = Modifier.padding(6.dp))
+                    Text(
+                        text = "Culture festival in pakistan",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Row(
+                        modifier = Modifier.padding(top = 8.dp),
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        Icon(
+                            Icons.Outlined.CheckCircle,
+                            contentDescription = "KeyboardArrowDown",
+                            modifier = Modifier.size(18.dp)
                         )
-                        Row(
-                            modifier = Modifier.padding(top = 8.dp),
-                            horizontalArrangement = Arrangement.spacedBy(6.dp)
-                        ) {
-                            Icon(
-                                Icons.Outlined.CheckCircle,
-                                contentDescription = "KeyboardArrowDown",
-                                modifier = Modifier.size(18.dp)
-                            )
-                            Text(text = "10:00 - 19:30")
-                        }
+                        Text(text = "10:00 - 19:30")
+                    }
+                }
+                Column(modifier = Modifier.padding(start = 18.dp)) {
+                    Image(
+                        painter = painterResource(id = R.drawable.art_event),
+                        contentDescription = "Art event",
+                        modifier = Modifier
+                            .width(270.dp)
+                            .clip(RoundedCornerShape(8.dp))
+                    )
+                    Spacer(modifier = Modifier.padding(6.dp))
+                    Text(
+                        text = "Art festival in pakistan",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Row(
+                        modifier = Modifier.padding(top = 8.dp),
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        Icon(
+                            Icons.Outlined.CheckCircle,
+                            contentDescription = "KeyboardArrowDown",
+                            modifier = Modifier.size(18.dp)
+                        )
+                        Text(text = "10:00 - 19:30")
+                    }
+                }
+                Column(modifier = Modifier.padding(start = 18.dp)) {
+                    Image(
+                        painter = painterResource(id = R.drawable.culture_event),
+                        contentDescription = "Event 1",
+                        modifier = Modifier
+                            .width(240.dp)
+                            .clip(RoundedCornerShape(8.dp))
+                    )
+                    Spacer(modifier = Modifier.padding(6.dp))
+                    Text(
+                        text = "Culture festival in pakistan",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Row(
+                        modifier = Modifier.padding(top = 8.dp),
+                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                    ) {
+                        Icon(
+                            Icons.Outlined.CheckCircle,
+                            contentDescription = "KeyboardArrowDown",
+                            modifier = Modifier.size(18.dp)
+                        )
+                        Text(text = "10:00 - 19:30")
                     }
                 }
             }
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = "Upcoming events",
+                fontWeight = FontWeight.ExtraBold,
+                fontSize = 20.sp, modifier = Modifier
+                    .padding(top = 30.dp, start = 13.dp)
+            )
+            TextButton(
+                onClick = {},
+                colors = textButtonColors(
+                    contentColor = Color.Gray
+                ),
+                modifier = Modifier.padding(end = 20.dp, top = 20.dp)
             ) {
                 Text(
-                    text = "Upcoming events",
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = 20.sp, modifier = Modifier
-                        .padding(top = 30.dp, start = 13.dp)
-                )
-                TextButton(
-                    onClick = {},
-                    colors = textButtonColors(
-                        contentColor = Color.Gray
-                    ),
-                    modifier = Modifier.padding(end = 20.dp, top = 20.dp)
-                ) {
-                    Text(
-                        text = "See All", fontSize = 15.sp,
-                        style = TextStyle(
-                            textDecoration = TextDecoration
-                                .Underline
-                        )
+                    text = "See All", fontSize = 15.sp,
+                    style = TextStyle(
+                        textDecoration = TextDecoration
+                            .Underline
                     )
-                }
+                )
             }
+        }
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+        )
+        {
             Row {
                 Box(
                     modifier = Modifier
@@ -399,79 +403,83 @@ fun ScreenBox(Innerpadding : PaddingValues) {
                         Text(text = "18", fontWeight = FontWeight.ExtraBold)
                     }
                 }
-
                 Image(
-                    painter = painterResource(id = R.drawable.upcoming_event),
+                    painter = painterResource(id = R.drawable.event_2),
                     contentDescription = "Art event",
+                    contentScale = ContentScale.FillBounds,
                     modifier = Modifier
-                        .size(1000.dp)
+                        .padding(start = 20.dp, end = 30.dp)
+                        .fillMaxHeight()
+                        .width(1000.dp)
                         .clip(RoundedCornerShape(8.dp))
                 )
             }
+            BottomAppBar(modifier = Modifier
+                .height(100.dp)
+                .align(Alignment.BottomEnd)
+                .background(
+                    Brush.linearGradient(
+                        colors = listOf(
+                            Color.White.copy(alpha = 0.5f),
+                            Color.Transparent
+                        ),
+                        start = Offset.Zero,
+                        end = Offset(0f, Float.MAX_VALUE) // Gradient from top to bottom
+                    )
+                ),
+                containerColor = Color(
+                    red = 255, green = 255, blue = 255, alpha = 210
+                ),
+                actions = {
+                    Column(
+                        modifier = Modifier
+                            .padding(start = 25.dp)
+                    ) {
+
+                        Icon(
+                            Icons.Outlined.Home, "Home",
+                            modifier = Modifier.size(40.dp), tint = Color(0xFF837C7C)
+                        )
+                        Text(text = "Home", color = Color(0xFF837C7C))
+                    }
+                    Spacer(modifier = Modifier.padding(start = 35.dp))
+                    Column(
+                        modifier = Modifier
+                            .padding(start = 20.dp)
+                    ) {
+                        Icon(
+                            Icons.Outlined.Search, "Search",
+                            modifier = Modifier.size(40.dp), tint = Color(0xFF837C7C)
+                        )
+                        Text(text = "Search", color = Color(0xFF837C7C))
+                    }
+                    Spacer(modifier = Modifier.padding(start = 35.dp))
+                    Column(
+                        modifier = Modifier
+                            .padding(start = 20.dp)
+                    ) {
+                        Icon(
+                            Icons.Outlined.Place, "Place",
+                            modifier = Modifier.size(40.dp), tint = Color(0xFF837C7C)
+                        )
+                        Text(text = "Place", color = Color(0xFF837C7C))
+                    }
+                    Spacer(modifier = Modifier.padding(start = 35.dp))
+                    Column(
+                        modifier = Modifier
+                            .padding(start = 20.dp)
+                    ) {
+                        Icon(
+                            Icons.Outlined.Menu, "Menu",
+                            modifier = Modifier.size(40.dp), tint = Color(0xFF837C7C)
+                        )
+                        Text(text = "Menu", color = Color(0xFF837C7C))
+                    }
+                }
+            )
         }
     }
-
-@Composable
-fun BottomBar() {
-    BottomAppBar(
-        actions = {
-            Column(modifier = Modifier
-                .padding(start = 25.dp)) {
-
-                Icon(
-                    Icons.Outlined.Home, "Home",
-                    modifier = Modifier.size(40.dp)
-                )
-                Text(text = "Home")
-            }
-            Spacer(modifier = Modifier.padding(start = 35.dp))
-            Column(modifier = Modifier
-                .padding(start = 20.dp)) {
-
-                Icon(
-                    Icons.Outlined.Search, "Search",
-                    modifier = Modifier.size(40.dp),tint = Color.Gray
-                )
-                Text(text = "Search",color = Color.Gray)
-            }
-            Spacer(modifier = Modifier.padding(start = 35.dp))
-            Column(modifier = Modifier
-                .padding(start = 20.dp)) {
-
-                Icon(
-                    Icons.Outlined.Place, "Place",
-                    modifier = Modifier.size(40.dp),tint = Color.Gray
-                )
-                Text(text = "Place",color = Color.Gray)
-            }
-            Spacer(modifier = Modifier.padding(start = 35.dp))
-            Column(modifier = Modifier
-                .padding(start = 20.dp)) {
-
-                Icon(
-                    Icons.Outlined.Menu, "Menu",
-                    modifier = Modifier.size(40.dp),tint = Color.Gray
-                )
-                Text(text = "Menu",color = Color.Gray)
-            }
-        }
-    )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
