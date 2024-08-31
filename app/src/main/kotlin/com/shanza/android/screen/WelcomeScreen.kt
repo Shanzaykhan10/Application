@@ -52,6 +52,7 @@ import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.material.icons.sharp.Home
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.BottomAppBarDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonDefaults.textButtonColors
@@ -73,10 +74,13 @@ import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.focusModifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.pointer.motionEventSpy
@@ -400,7 +404,7 @@ fun ScreenBox(Innerpadding : PaddingValues) {
                     painter = painterResource(id = R.drawable.upcoming_event),
                     contentDescription = "Art event",
                     modifier = Modifier
-                        .fillMaxSize()
+                        .size(1000.dp)
                         .clip(RoundedCornerShape(8.dp))
                 )
             }
@@ -409,16 +413,16 @@ fun ScreenBox(Innerpadding : PaddingValues) {
 
 @Composable
 fun BottomBar() {
-    BottomAppBar(containerColor = Color.Transparent,
+    BottomAppBar(
         actions = {
             Column(modifier = Modifier
                 .padding(start = 25.dp)) {
 
                 Icon(
                     Icons.Outlined.Home, "Home",
-                    modifier = Modifier.size(40.dp), tint = Color.Gray
+                    modifier = Modifier.size(40.dp)
                 )
-                Text(text = "Home", color = Color.Gray)
+                Text(text = "Home")
             }
             Spacer(modifier = Modifier.padding(start = 35.dp))
             Column(modifier = Modifier
